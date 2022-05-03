@@ -1,0 +1,26 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+
+
+    {% set shop = page.footer.extensions.swag_shop_finder|first %}
+         {% block layout_main_navigation_menu_home%}
+        {{ parent() }}
+             <a class="nav-link main-navigation-link"
+                data-toggle="modal" data-target="#shop-{{shop.id}}"
+                href="#"
+                itemprop="url"
+                title="kretoszczur">
+                 <div class="main-navigation-link-text">
+                     <span itemprop="name">{{shop.name}}</span>
+                 </div>
+             </a>
+         {%endblock%}
+
+      {% block layout_main_navigation%}
+          {{parent()}}
+
+              {% if page.footer.extensions.swag_shop_finder %}
+              {%sw_include '@Storefront/storefront/layout/footer/shop-finder-footer.html.twig' with {
+                  'swag_shop_finder':page.footer.extensions.swag_shop_finder
+              }%}
+              {%endif%}
+      {%endblock%}
