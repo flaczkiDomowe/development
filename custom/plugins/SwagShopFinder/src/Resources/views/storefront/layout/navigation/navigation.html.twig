@@ -1,18 +1,26 @@
 {% sw_extends '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
-
-
-    {% set shop = page.footer.extensions.swag_shop_finder|first %}
          {% block layout_main_navigation_menu_home%}
         {{ parent() }}
+             <a class="nav-link main-navigation-link"
+                href="{{url('storefront.custom.swag_shop_finder.examplepage')}}"
+                itemprop="url"
+                title="Our stores">
+                 <div class="main-navigation-link-text">
+                     <span itemprop="name">Our stores</span>
+                 </div>
+             </a>
+             {% if page.footer.extensions.swag_shop_finder %}
+             {% set shop = page.footer.extensions.swag_shop_finder|first %}
              <a class="nav-link main-navigation-link"
                 data-toggle="modal" data-target="#shop-{{shop.id}}"
                 href="#"
                 itemprop="url"
-                title="kretoszczur">
+                title={{shop.name}}>
                  <div class="main-navigation-link-text">
                      <span itemprop="name">{{shop.name}}</span>
                  </div>
              </a>
+             {%endif%}
          {%endblock%}
 
       {% block layout_main_navigation%}

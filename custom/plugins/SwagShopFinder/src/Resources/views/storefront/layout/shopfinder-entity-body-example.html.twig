@@ -1,0 +1,20 @@
+<div>
+    <p>
+        {{shop.name}}<br>
+        {{shop.street}}<br>
+        {{shop.postCode}} {{shop.city}}<br>
+        {{shop.country.name}}<br>
+        {%if shop.telephone%}
+            {{ 'swag_shop_finder.phone'|trans }}: {{shop.telephone}}<br>
+        {%endif%}
+        {%if shop.url%}
+            {{ 'swag_shop_finder.homepage'|trans }}: {{shop.url}}<br>
+        {%endif%}
+    </p>
+    {%if shop.openTimes%}
+        <p>
+            {{ 'swag_shop_finder.openTimes'|trans }}: <br>
+            {{shop.openTimes}}
+        </p>
+    {%endif%}
+</div>

@@ -30,24 +30,9 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>
-                        {{shop.name}}<br>
-                        {{shop.street}}<br>
-                        {{shop.postCode}} {{shop.city}}<br>
-                        {{shop.country.name}}<br>
-                        {%if shop.telephone%}
-                            {{ 'swag_shop_finder.phone'|trans }}: {{shop.telephone}}<br>
-                        {%endif%}
-                        {%if shop.url%}
-                            {{ 'swag_shop_finder.homepage'|trans }}: {{shop.url}}<br>
-                        {%endif%}
-                    </p>
-                    {%if shop.openTimes%}
-                    <p>
-                        {{ 'swag_shop_finder.openTimes'|trans }}: <br>
-                        {{shop.openTimes}}
-                    </p>
-                    {%endif%}
+                    {%sw_include '@Storefront/storefront/layout/shopfinder-entity-body-example.html.twig' with {
+                        'swag_shop_finder':swag_shop_finder,'shop':shop
+                    }%}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -39,7 +39,7 @@ class DemoDataController extends AbstractController
     /**
      * @param Context $context
      * @return Response
-     * @Route("/api/v{version}/_action/swag-shop-finder/generate",name="api.custom.swag_shop_finder.generate",methods={"POST"})
+     * @Route("/api/v{version}/_action/swag-shop-finder.js/generate",name="api.custom.swag_shop_finder.generate",methods={"POST"})
      */
     public function generate(Context $context):Response{
         $faker= Factory::create();
@@ -75,4 +75,5 @@ class DemoDataController extends AbstractController
 
         return $country;
     }
+
 }

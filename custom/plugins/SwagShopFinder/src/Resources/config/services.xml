@@ -15,8 +15,21 @@
            <argument type="service" id="service_container"/>
        </call>
         </service>
+        <service id="SwagShopFinder\Storefront\Page\Example\ExamplePageLoader" public="true">
+            <argument type="service" id="Shopware\Storefront\Page\GenericPageLoader" />
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+        <service id="SwagShopFinder\Storefront\Controller\ExampleController" public="true">
+            <argument type="service" id="SwagShopFinder\Storefront\Page\Example\ExamplePageLoader"/>            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
         <service id="SwagShopFinder\Storefront\Subscriber\FooterSubscriber">
             <argument id="Shopware\Core\System\SystemConfig\SystemConfigService" type="service"/>
+            <argument id="swag_shop_finder.repository" type="service"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="SwagShopFinder\Storefront\Subscriber\PageSubscriber">
             <argument id="swag_shop_finder.repository" type="service"/>
             <tag name="kernel.event_subscriber"/>
         </service>

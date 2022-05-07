@@ -1,0 +1,40 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+{% block base_main%}
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Launch static backdrop modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if page.footer.extensions.swag_shop_finder %}
+        {%sw_include '@Storefront/storefront/layout/footer/shop-finder-footer.html.twig' with {
+            'swag_shop_finder':page.footer.extensions.swag_shop_finder
+        }%}
+    {%endif%}
+    {%if entity%}
+        {% set shop=entity.elements|first%}
+        {%sw_include '@Storefront/storefront/layout/shopfinder-entity-body-example.html.twig' with {
+            'swag_shop_finder':page.footer.extensions.swag_shop_finder,'shop':shop
+        }%}
+    {%endif%}
+    {%sw_include '@Storefront/storefront/layout/navigation/shopfinder-navbar-button.html.twig'
+    %}
+{%endblock%}
