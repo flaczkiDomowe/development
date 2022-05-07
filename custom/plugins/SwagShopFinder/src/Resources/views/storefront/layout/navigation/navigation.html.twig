@@ -1,14 +1,8 @@
 {% sw_extends '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
          {% block layout_main_navigation_menu_home%}
         {{ parent() }}
-             <a class="nav-link main-navigation-link"
-                href="{{url('storefront.custom.swag_shop_finder.examplepage')}}"
-                itemprop="url"
-                title="Our stores">
-                 <div class="main-navigation-link-text">
-                     <span itemprop="name">Our stores</span>
-                 </div>
-             </a>
+             {%sw_include '@Storefront/storefront/layout/navigation/shopfinder-navbar-button.html.twig'
+             with {'swag_shop_finder':page.footer.extensions.swag_shop_finder}%}
              {% if page.footer.extensions.swag_shop_finder %}
              {% set shop = page.footer.extensions.swag_shop_finder|first %}
              <a class="nav-link main-navigation-link"
